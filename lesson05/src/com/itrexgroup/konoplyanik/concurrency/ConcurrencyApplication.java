@@ -1,5 +1,6 @@
 package com.itrexgroup.konoplyanik.concurrency;
 
+import com.itrexgroup.konoplyanik.concurrency.service.InputService;
 import com.itrexgroup.konoplyanik.concurrency.service.LandRover;
 import com.itrexgroup.konoplyanik.concurrency.service.ThreadA;
 import com.itrexgroup.konoplyanik.concurrency.service.ThreadB;
@@ -9,7 +10,8 @@ import com.itrexgroup.konoplyanik.concurrency.service.ThreadD;
 public class ConcurrencyApplication {
 
 	public static void main(String[] args) throws InterruptedException {
-		LandRover landRover = new LandRover();
+		InputService input = new InputService();
+		LandRover landRover = new LandRover(input.getN());
 
 		Thread threadA = new ThreadA(landRover);
 		Thread threadB = new ThreadB(landRover);
